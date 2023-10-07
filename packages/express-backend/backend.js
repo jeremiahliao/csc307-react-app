@@ -90,7 +90,7 @@ const addUser = (user) => {
 app.post('/users', (req, res) => {
     const userToAdd = req.body;
     addUser(userToAdd);
-    res.send(userToAdd);
+    res.status.send(201);
 })
 
 const deleteUserById = (id) => {
@@ -105,7 +105,7 @@ app.delete('/users/:id', (req, res) => {
     }
     else{
         deleteUserById(req.params.id);
-        res.status(202).send()
+        res.status(204).send()
     }
 })
 
