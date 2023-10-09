@@ -82,15 +82,26 @@ app.get('/users/:id', (req, res) => {
     }
 })
 
+const generateId = () => {
+    const str = '0123456789abccdefghijklmnopqrstuvwxyz';
+    let id = '';
+    for (let i = 0; i < 6; i++) {
+        const num = Math.floor(Math.random() * str.length);
+        id += str[num];
+    }
+    return id;
+}
+
 const addUser = (user) => {
+    user['id'] = generateId();
     users['users_list'].push(user);
     return user;
 }
 
 app.post('/users', (req, res) => {
     const userToAdd = req.body;
-    addUser(userToAdd);
-    res.status.send(201);
+    const updatedUser = addUser(userToAdd);
+    res.status(201).send(updatedUser);
 })
 
 const deleteUserById = (id) => {
