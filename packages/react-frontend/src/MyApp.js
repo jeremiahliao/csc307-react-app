@@ -63,10 +63,15 @@ function MyApp(){
             if(res.status === 201){
                 return res.json();
             }
+            else{
+                return undefined;
+            }
         })
         .then((data) => {
-            person["id"] = data.id;
-            setCharacters([...characters, person]);
+            if(data !== undefined){
+                person["id"] = data.id;
+                setCharacters([...characters, person]);
+            }
         })
         .catch((error) => {
             console.log(error);
