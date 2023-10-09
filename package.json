@@ -7,5 +7,15 @@
   ],
   "devDependencies": {
     "nodemon": "^3.0.1"
-  }
+  },
+  "name": "csc307-react-app",
+  "description": "first assignment in csc307, building a simple react app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "(cd packages/express-backend && npm start) & (cd packages/react-frontend && npm start)"
+  },
+  "author": "",
+  "license": "ISC"
 }
