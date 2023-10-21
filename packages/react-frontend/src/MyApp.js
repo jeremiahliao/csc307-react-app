@@ -14,16 +14,16 @@ function MyApp(){
             });
     }, []);
 
-    function deleteUser(id){
-        console.log(`http://localhost:8000/users/${id}`);
-        const promise = fetch(`http://localhost:8000/users/${id}`,
+    function deleteUser(_id){
+        console.log(`http://localhost:8000/users/${_id}`);
+        const promise = fetch(`http://localhost:8000/users/${_id}`,
             {method: "DELETE"}
         );
         return promise;
     }
     
     function removeOneCharacter(index){
-        const id = characters[index].id;
+        const id = characters[index]._id;
         deleteUser(id).then(
             (res) => {
                 if(res.status === 204){
@@ -57,7 +57,6 @@ function MyApp(){
 
 
     function updateList(person){
-        const updatedUser = person;
         postUser(person)
         .then((res) => {
             if(res.status === 201){
@@ -69,7 +68,7 @@ function MyApp(){
         })
         .then((data) => {
             if(data !== undefined){
-                person["id"] = data.id;
+                person["_id"] = data._id;
                 setCharacters([...characters, person]);
             }
         })
